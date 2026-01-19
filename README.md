@@ -15,6 +15,8 @@ initializer and a multi-tile hill-climbing optimizer that renders improvement fr
 - `greedy_init.py` is a thin wrapper around the greedy frontier initializer in `hillclimb.py`.
 - `hillclimb.py` builds a greedy initial grid, then repeatedly picks 4 random positions,
   tests all permutations of those tiles, and applies the best improvement before rendering frames to `frames/`.
+- `qap_opt.py` runs a simulated-annealing solver over the same seam-cost objective,
+  with optional rendering of the best assignment.
 - `seam_cost.py` builds seam-cost lookup tables for fast right/down edge scoring.
 
 ## Quick start
@@ -38,6 +40,12 @@ Generate a greedy initial grid and run hill-climbing permutation swaps (single e
 
 ```bash
 python hillclimb.py
+```
+
+Run the quadratic assignment solver (simulated annealing) and render the best grid:
+
+```bash
+python qap_opt.py --auto-temp --render-dir frames
 ```
 
 The optimizer writes frames to `frames/` every N improvements (default is every 100, scale 4x).
